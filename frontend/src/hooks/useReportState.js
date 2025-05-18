@@ -1,5 +1,3 @@
-// src/hooks/useReportState.js
-// Custom hook to manage report state
 
 import { useState, useEffect } from 'react';
 import { generateDummyData, applyFilters } from '../utils/dummyDataGenerator';
@@ -21,7 +19,6 @@ export default function useReportState() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   
-  // Effect to apply filters when filters or data change
   useEffect(() => {
     if (reportData.length > 0) {
       const filtered = applyFilters(reportData, filters);
@@ -131,8 +128,7 @@ export default function useReportState() {
         createdAt: new Date().toISOString()
       };
       
-      // In a real app, you'd save to a backend
-      // For now, just save to localStorage as an example
+      
       const savedReports = JSON.parse(localStorage.getItem('customReports') || '[]');
       savedReports.push(reportToSave);
       localStorage.setItem('customReports', JSON.stringify(savedReports));

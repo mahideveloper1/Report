@@ -1,5 +1,3 @@
-// src/components/ChartDisplay.jsx
-// Component for displaying charts based on selected metrics
 
 import React, { useState } from 'react';
 import { 
@@ -106,7 +104,6 @@ const ChartDisplay = ({ data, metric, height = 300 }) => {
   };
   
   const getAvailableChartTypes = () => {
-    // Different metrics work best with different chart types
     switch (metric.id) {
       case 'challenges':
       case 'completion_status':

@@ -1,5 +1,3 @@
-// src/components/ReportViewer.jsx
-// Component for viewing generated reports with charts
 
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';

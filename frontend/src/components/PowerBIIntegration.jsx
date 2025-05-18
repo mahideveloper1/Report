@@ -1,5 +1,3 @@
-// src/components/PowerBIIntegration.jsx
-// Component for Power BI integration features
 
 import React, { useState } from 'react';
 import { BarChart2, ExternalLink, Info } from 'lucide-react';
@@ -13,8 +11,7 @@ const PowerBIIntegration = ({ metrics, reportData }) => {
     setIsConnecting(true);
     
     try {
-      // In a real app, this would initiate OAuth flow with Power BI
-      // For demo purposes, we'll simulate a connection after a delay
+     
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsConnected(true);
     } catch (error) {
@@ -25,8 +22,7 @@ const PowerBIIntegration = ({ metrics, reportData }) => {
   };
   
   const handlePublishToPowerBI = async () => {
-    // This would publish the current dataset to Power BI
-    // For demo purposes, we'll just show an alert
+   
     alert('Report published to Power BI dashboard!');
   };
   

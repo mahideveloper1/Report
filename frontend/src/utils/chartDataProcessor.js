@@ -1,5 +1,3 @@
-// src/utils/chartDataProcessor.js
-// Processes data for various chart types
 
 /**
  * Generate chart data for visualization
@@ -15,20 +13,20 @@ export const generateChartData = (data, metric) => {
     case 'challenges':
     case 'login_status':
     case 'microskill_name':
-      // Good for pie charts - count by category
+      //  for pie charts - count by category
       return generateCategoryData(data, metric.id);
     
     case 'score':
     case 'completed_in_days':
     case 'attempts':
     case 'time_spent':
-      // Good for histograms/bar charts - distribute by ranges
+      // for histograms/bar charts - distribute by ranges
       return generateHistogramData(data, metric.id);
       
     case 'content_launch_date':
     case 'completion_date':
     case 'last_login_date':
-      // Good for line charts - count by month
+      // for line charts - count by month
       return generateTimeSeriesData(data, metric.id);
       
     default:
@@ -53,7 +51,7 @@ const generateCategoryData = (data, metricId) => {
   return Object.keys(counts).map(key => ({ 
     name: key, 
     value: counts[key],
-    count: counts[key] // For consistent naming in charts
+    count: counts[key] 
   }));
 };
 
@@ -67,7 +65,6 @@ const generateHistogramData = (data, metricId) => {
   const ranges = {};
   let maxValue = 0;
   
-  // Find the maximum value
   data.forEach(item => {
     const value = Number(item[metricId]);
     if (!isNaN(value) && value > maxValue) maxValue = value;
@@ -94,7 +91,7 @@ const generateHistogramData = (data, metricId) => {
   return Object.keys(ranges).map(key => ({ 
     name: key, 
     count: ranges[key],
-    value: ranges[key] // For consistent naming in charts
+    value: ranges[key] 
   }));
 };
 
@@ -127,7 +124,7 @@ const generateTimeSeriesData = (data, metricId) => {
   return sortedMonths.map(month => ({
     name: month,
     count: dateCountsByMonth[month],
-    value: dateCountsByMonth[month] // For consistent naming in charts
+    value: dateCountsByMonth[month] 
   }));
 };
 
@@ -145,16 +142,12 @@ const generateDefaultChartData = (data, metricId) => {
     aggregated[value] = (aggregated[value] || 0) + 1;
   });
   
-  // If there are too many unique values, group smaller ones
   const entries = Object.entries(aggregated);
   if (entries.length > 10) {
-    // Sort by count
     entries.sort((a, b) => b[1] - a[1]);
     
-    // Keep top 9 and group the rest
     const result = entries.slice(0, 9).map(([name, count]) => ({ name, count, value: count }));
     
-    // Add "Others" category
     const othersCount = entries.slice(9).reduce((sum, [, count]) => sum + count, 0);
     if (othersCount > 0) {
       result.push({ name: 'Others', count: othersCount, value: othersCount });
@@ -218,7 +211,6 @@ export const generateSummaryStats = (data, metrics) => {
       distinctCount: new Set(values).size
     };
     
-    // Additional stats for numeric values
     const numericValues = values.map(Number).filter(v => !isNaN(v));
     if (numericValues.length > 0) {
       const sum = numericValues.reduce((a, b) => a + b, 0);

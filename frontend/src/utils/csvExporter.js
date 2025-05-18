@@ -1,5 +1,3 @@
-// src/utils/csvExporter.js
-// Exports data to CSV format
 
 /**
  * Convert data to CSV format and trigger download
@@ -23,7 +21,6 @@ export const downloadCSV = (data, filename = 'report.csv') => {
     data.forEach(row => {
       const values = headers.map(header => {
         const value = row[header] === null || row[header] === undefined ? '' : row[header];
-        // Escape quotes and wrap in quotes if contains comma or quote
         const escaped = String(value).replace(/"/g, '""');
         return `"${escaped}"`;
       });
@@ -73,14 +70,11 @@ export const downloadPowerBICSV = (data, metrics, filename = 'power_bi_report.cs
       const values = headers.map(header => {
         const value = row[header] === null || row[header] === undefined ? '' : row[header];
         
-        // Get metric type to format correctly for Power BI
         const metric = metrics.find(m => m.id === header);
         const metricType = metric ? getMetricType(metric.id) : 'string';
         
-        // Format based on type
         let formattedValue = value;
         if (metricType === 'date' && value) {
-          // Format dates as YYYY-MM-DD for Power BI
           formattedValue = value;
         } else if (metricType === 'number' && !isNaN(Number(value))) {
           // Format numbers without quotes

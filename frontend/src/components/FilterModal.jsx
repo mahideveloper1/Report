@@ -1,5 +1,3 @@
-// src/components/FilterModal.jsx
-// Modal for configuring filters for selected metrics
 
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';

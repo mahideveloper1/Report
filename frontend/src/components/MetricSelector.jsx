@@ -1,5 +1,3 @@
-// src/components/MetricSelector.jsx
-// Component for selecting metrics for the report
 
 import React from 'react';
 import { Check, Filter } from 'lucide-react';

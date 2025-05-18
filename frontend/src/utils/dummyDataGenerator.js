@@ -1,5 +1,3 @@
-// src/utils/dummyDataGenerator.js
-// Generates dummy data based on selected metrics
 
 /**
  * Generate dummy data based on selected metrics

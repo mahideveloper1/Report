@@ -1,5 +1,3 @@
-// src/components/ExportOptions.jsx
-// Updated with real email functionality
 
 import React, { useState } from 'react';
 import { Download, Mail, BarChart2, Check } from 'lucide-react';
@@ -69,7 +67,6 @@ const ExportOptions = ({ data, metrics, reportName }) => {
     const headers = Object.keys(data[0]);
     const csvRows = [];
     
-    // Add headers
     csvRows.push(headers.join(','));
     
     // Add rows
@@ -99,8 +96,6 @@ const ExportOptions = ({ data, metrics, reportName }) => {
   
   // Function to send email with the report
   const sendEmailWithReport = async (email, reportName, csvContent, summary) => {
-    // In a real implementation, this would call your backend API
-    // Example using fetch:
     try {
       const response = await fetch('/api/send-report', {
         method: 'POST',
@@ -120,8 +115,7 @@ const ExportOptions = ({ data, metrics, reportName }) => {
     } catch (error) {
       console.error('API call failed:', error);
       
-      // For demonstration, we'll simulate a successful response
-      // In production, remove this fallback and properly handle the error
+      
       console.warn('Using simulated email response for demonstration');
       return { 
         success: true, 

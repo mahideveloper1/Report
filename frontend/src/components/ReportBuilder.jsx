@@ -1,5 +1,3 @@
-// src/components/ReportBuilder.jsx
-// Component for building and configuring reports
 
 import React, { useState } from 'react';
 import { Check, X, Settings } from 'lucide-react';

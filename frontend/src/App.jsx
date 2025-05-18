@@ -1,6 +1,3 @@
-// src/App.jsx
-// Main application component
-
 import React from 'react';
 import ReportBuilder from './components/ReportBuilder';
 import ReportViewer from './components/ReportViewer';

@@ -1,5 +1,3 @@
-// server/index.js
-// Simple Express server for handling email sending
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -16,12 +14,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Configure email transporter
-// For production, use your actual SMTP settings
+//email transporter
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.example.com',
   port: process.env.SMTP_PORT || 587,
-  secure: false, // true for 465, false for other ports
+  secure: false, 
   auth: {
     user: process.env.SMTP_USER || 'your-email@example.com',
     pass: process.env.SMTP_PASS || 'your-password'

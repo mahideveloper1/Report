@@ -1,5 +1,3 @@
-// src/data/metricsData.js
-// Contains all available metrics and their filter options
 
 export const availableMetrics = [
   { id: 'master_o_id', name: 'Master-O ID', filters: ['Count', 'Distinct Count', 'Distinct Value'] },
