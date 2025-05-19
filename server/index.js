@@ -10,7 +10,11 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({  
+  origin: 'http://localhost:5173', // Your frontend URL
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -60,7 +64,7 @@ app.post('/api/send-report', async (req, res) => {
     
     // Send email with CSV attachment
     const info = await transporter.sendMail({
-      from: '"Custom Reports" <reports@example.com>',
+      from: '"Custom Reports" <maheshvashisth1111@gmail.com>',
       to: email,
       subject: `Custom Report: ${reportName}`,
       html: htmlContent,

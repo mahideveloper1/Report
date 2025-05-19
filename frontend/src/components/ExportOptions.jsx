@@ -97,7 +97,7 @@ const ExportOptions = ({ data, metrics, reportName }) => {
   // Function to send email with the report
   const sendEmailWithReport = async (email, reportName, csvContent, summary) => {
     try {
-      const response = await fetch('/api/send-report', {
+      const response = await fetch('http://localhost:3001/api/send-report', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
